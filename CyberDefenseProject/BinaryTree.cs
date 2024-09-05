@@ -88,34 +88,7 @@ namespace CyberDefenseProject
                 return FindProtection(node.Right, value);
             }
         }
-        //    public int Min()
-        //    {
-        //        if (root == null)
-        //        {
-        //            return 0;
-        //        }
-        //        TreeNode temp = root;
-
-        //        while (temp.Left != null)
-        //        {
-        //            temp = temp.Left;
-        //        }
-        //        return temp.value;
-        //    }
-        //    public int Max()
-        //    {
-        //        if (root == null)
-        //        {
-        //            return 0;
-        //        }
-        //        TreeNode temp = root;
-
-        //        while (temp.Right != null)
-        //        {
-        //            temp = temp.Right;
-        //        }
-        //        return temp.value;
-        //    }
+        
         public void PrintTree()
         {
             PrintTree(root, "", true);
