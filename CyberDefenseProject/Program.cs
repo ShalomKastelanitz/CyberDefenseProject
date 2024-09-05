@@ -18,15 +18,15 @@ public class Program
 
         //בונה עץ של הגנות
         BinaryTree tree = new BinaryTree();
-        for (int i = 0; i < RootNodesProtection.Count; i++)
+        for (int i = 0; i < RootNodesProtection.Count; i++)//o(n)
         {
             tree.Insert(RootNodesProtection[i]);
         }
         tree.PrintTree();
-       
 
+        
         //עובר תקיפה תקיפה ומוצא הגנות הנכונות
-        foreach (Attack nodeAttac in RootNodesAttack)//o(n+m)
+        foreach (Attack nodeAttac in RootNodesAttack)//o(n*m)
         {
             //מוצא את חומרת ההתקפה
             int AttackSeverity = nodeAttac.FormulaCalculatingSeverity();
@@ -45,5 +45,12 @@ public class Program
 
             }
         }
+
+        
+       
+
     }
+    
+   
+
 }

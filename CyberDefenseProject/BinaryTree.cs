@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CyberDefenseProject
 {
     internal class BinaryTree
     {
         public NodeDefense root;
+        /// <summary>
+        /// Initializes a new instance of the BinaryTree class with a null root.
+        /// </summary>
         public BinaryTree()
         {
             root = null;
         }
+        /// <summary>
+        /// Inserts a new NodeDefense object into the binary tree.
+        /// </summary>
+        /// <param name="Defense">The NodeDefense object to be inserted.</param>
         public void Insert(NodeDefense Defense)
         {
             if (root == null)
@@ -30,7 +38,7 @@ namespace CyberDefenseProject
         //פונקצית הוספה לעץ
         private void Insert(NodeDefense node, NodeDefense Defense)
         {
-            //בודק את סכום 2 המשתנים בכדי לדעת אם לימין או לשמאל
+            //בודק את המינמום בכדי לדעת אם לימין או לשמאל
             if (Defense.MinSeverity < node.MinSeverity)
             {
                 if (node.Left != null)
@@ -58,6 +66,12 @@ namespace CyberDefenseProject
             }
 
         }
+        /// <summary>
+        /// Finds a suitable defense based on a given severity value.
+        /// </summary>
+        /// <param name="value">The severity value to search for.</param>
+        /// <returns>The NodeDefense object if found, otherwise null.</returns>
+        //מציאת הגנה מתאימה
         public NodeDefense FindProtection(int value)
         {
             if (root == null)
@@ -88,11 +102,18 @@ namespace CyberDefenseProject
                 return FindProtection(node.Right, value);
             }
         }
-        
+        /// <summary>
+        /// Prints the binary tree.
+        /// </summary>
+        //מדפיס את העץ
         public void PrintTree()
         {
-            PrintTree(root, "", true);
+            if (root != null)
+            {
+                PrintTree(root, "", true);
+            }
         }
+        //מדפיס את העץ
 
         private void PrintTree(NodeDefense node, string indent, bool last)
         {
@@ -117,8 +138,8 @@ namespace CyberDefenseProject
             }
         }
 
-        
 
+        
     }
 
 
