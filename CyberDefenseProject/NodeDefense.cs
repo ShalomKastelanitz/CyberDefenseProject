@@ -16,8 +16,6 @@ namespace CyberDefenseProject
         public NodeDefense Right { get; set; }
 
 
-
-
     }
 
 }

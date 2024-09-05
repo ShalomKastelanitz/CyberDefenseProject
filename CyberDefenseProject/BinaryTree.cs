@@ -31,7 +31,7 @@ namespace CyberDefenseProject
         private void Insert(NodeDefense node, NodeDefense Defense)
         {
             //בודק את סכום 2 המשתנים בכדי לדעת אם לימין או לשמאל
-            if ((Defense.MinSeverity+Defense.MaxSeverity) < (node.MinSeverity+node.MaxSeverity))
+            if (Defense.MinSeverity < node.MinSeverity)
             {
                 if (node.Left != null)
                 {
@@ -58,40 +58,36 @@ namespace CyberDefenseProject
             }
 
         }
-        //public bool Find(int value)
-        //{
-        //    if (root == null)
-        //    {
+        public NodeDefense FindProtection(int value)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+            return FindProtection(root, value);
+        }
+        //מוצא הגנה מתאימה
+        private NodeDefense FindProtection(NodeDefense node, int value)
+        {
+            //בודק אם הגיע לסוף אז כנראה אין הגנה מתאימה
+            if (node == null)
+            {
+                return null;
+            }
+            if (value == node.MinSeverity||value==node.MaxSeverity)
+            {
+                return node;
+            }
+            if (value < node.MinSeverity)
+            {
+                return FindProtection(node.Left, value);
 
-        //        return false;
-
-
-
-
-        //    }
-        //    return Find(root, value);
-
-        //}
-        //    public bool Find(NodeDefense node, int value)
-        //    {
-        //        if (node == null)
-        //        {
-        //            return false;
-        //        }
-        //        if (value == node.value)
-        //        {
-        //            return true;
-        //        }
-        //        if (value < node.value)
-        //        {
-        //            return Find(node.Left, value);
-
-        //        }
-        //        else
-        //        {
-        //            return Find(node.Right, value);
-        //        }
-        //    }
+            }
+            else
+            {
+                return FindProtection(node.Right, value);
+            }
+        }
         //    public int Min()
         //    {
         //        if (root == null)
